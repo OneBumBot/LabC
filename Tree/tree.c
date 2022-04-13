@@ -14,7 +14,7 @@ node_t* tree_create(int key) {
 	return node;
 };
 
-void tree_traverse(node_t* root);
+void tree_traverse(node_t* root) {};
 
 node_t* tree_search(node_t* root, int key){
 	if (root == NULL) {
@@ -33,4 +33,4 @@ node_t* tree_search(node_t* root, int key){
 	}
 };
 
-node_t* tree_add(node_t* root, int key);
+node_t* tree_add(node_t* root, int key) {};
