@@ -5,7 +5,7 @@
 
 typedef struct node {
 	int key;
-	struct node* left, * right;
+	struct node* nodes[];
 } node_t;
 
 
