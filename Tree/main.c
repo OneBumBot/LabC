@@ -15,6 +15,7 @@ int main() {
 	a[1] = *y;
 
 
+
 	return 0;
 }
 

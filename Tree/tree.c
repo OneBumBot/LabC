@@ -8,8 +8,7 @@ node_t* tree_create(int key) {
 
 	node = (node_t*)malloc(sizeof(node_t));
 	node->key = key;
-	node->left = NULL;
-	node->right = NULL;
+	node->descend = NULL;
 
 	return node;
 };
