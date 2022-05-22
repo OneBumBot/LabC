@@ -48,8 +48,6 @@ node_t* tree_add(node_t* root, int key) {
 		root->descend->next->next = NULL;
 	}
 
-
-
 	return root; 
 };
 
