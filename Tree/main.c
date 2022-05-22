@@ -14,8 +14,6 @@ int main() {
 	a[0] = *x;
 	a[1] = *y;
 
-
-
 	return 0;
 }
 
