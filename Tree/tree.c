@@ -15,11 +15,11 @@ node_t* tree_create(int key) {
 
 void tree_traverse(node_t* root) {};
 
-node_t* tree_search(node_t* root, int key){
+node_t* tree_search(node_t* root, int key) {
 };
 
 node_t* tree_add(node_t* root, int key) {
-	
+
 	if (root == NULL) {
 		return NULL;
 	}
@@ -35,17 +35,14 @@ node_t* tree_add(node_t* root, int key) {
 		root->descend = malloc(sizeof(node_t));
 		root->descend->node = node;
 		root->descend->next = NULL;
+		return root;
 	}
 	else {
 		while (root->descend->next != NULL)
 			root->descend = root->descend->next;
-		root->descend->next =malloc(sizeof(node_t));
+		root->descend->next = malloc(sizeof(node_t));
 		root->descend->next->node = node;
 		root->descend->next->next = NULL;
+		return root;
 	}
-	return root; 
 };
-
-
-
-

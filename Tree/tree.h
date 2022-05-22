@@ -9,7 +9,7 @@ typedef struct node_list {
 	struct node_list* next;
 } node_list_t;
 
-typedef struct node{
+typedef struct node {
 	int key;
 	node_list_t* descend;
 } node_t;

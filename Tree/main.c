@@ -1,23 +1,28 @@
 #include "tree.h"
+#include <stdio.h>
 
 
 
 int main() {
 
 	node_t* x = tree_create(2);
-	node_t* y = tree_create(5);
-	
 
-	node_t *a; 
+	tree_add(x, 7);
 
-	a = (node_t*)malloc(2 * sizeof(node_t));
-	a[0] = *x;
-	a[1] = *y;
+	tree_add(x, 9);
+
+	tree_add(x, 19);
+
+	tree_add(x, 15);
+
+	tree_add(x, 29);
+
+	while (x->descend->next != NULL) {
+		x->descend = x->descend->next;
+		printf("%d", x->descend->node->key);
+	}
 
 	return 0;
 }
-
-
-
 
 
