@@ -6,15 +6,12 @@
 node_t* tree_create(int key) {
 	node_t* node = NULL;
 
-	node = (node_t*)realloc(node, sizeof(node_t));
+	node = (node_t*)malloc(sizeof(node_t));
+	node->key = key;
+	node->left = NULL;
+	node->right = NULL;
 
-	if (node != NULL) {
-		node->key = key;
-		node->descend = NULL;
-		return node;
-	}
-	
-	return NULL;
+	return node;
 };
 
 void tree_traverse(node_t* root) {};

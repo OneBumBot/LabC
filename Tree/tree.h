@@ -16,14 +16,14 @@ typedef struct node{
 } node_t;
 
 //Tree create
-node_t* tree_create(int key);
+node_t* tree_create(int);
 
 //Read tree nodes
-void tree_traverse(node_t* root);
+void tree_traverse(node_t*);
 
 //Find an element in tree 
-node_t* tree_search(node_t* root, int key);
+node_t* tree_search(node_t*, int);
 
 //Add an element in tree
-node_t* tree_add(node_t* root, int key);
+node_t* tree_add(node_t*, int);
 #endif
