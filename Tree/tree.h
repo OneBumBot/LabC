@@ -3,11 +3,17 @@
 
 #include <stdlib.h>
 
-typedef struct node {
-	int key;
-	struct node* left, * right;
-} node_t;
 
+
+typedef struct node_list {
+	struct node* node;
+	struct node_list* next;
+} node_list_t;
+
+typedef struct node{
+	int key;
+	node_list_t* descend;
+} node_t;
 
 //Tree create
 node_t* tree_create(int key);

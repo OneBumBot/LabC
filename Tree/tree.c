@@ -4,33 +4,53 @@
 
 
 node_t* tree_create(int key) {
-	node_t* node;
+	node_t* node = NULL;
 
-	node = (node_t*)malloc(sizeof(node_t));
-	node->key = key;
-	node->left = NULL;
-	node->right = NULL;
+	node = (node_t*)realloc(node, sizeof(node_t));
 
-	return node;
+	if (node != NULL) {
+		node->key = key;
+		node->descend = NULL;
+		return node;
+	}
+	
+	return NULL;
 };
 
 void tree_traverse(node_t* root) {};
 
 node_t* tree_search(node_t* root, int key){
+};
+
+node_t* tree_add(node_t* root, int key) {
+	
 	if (root == NULL) {
 		return NULL;
 	}
 
-	if (key == root->key) {
-		return root;
-	}
-	
-	if (key < root->key) {
-		return tree_search(root->left, key);
+	node_t* node = NULL;
+
+
+	node = (node_t*)realloc(node, sizeof(node_t));
+
+	node->key = key;
+	node->descend = NULL;
+	if (root->descend == NULL) {
+		root->descend = malloc(sizeof(node_t));
+		root->descend->node = node;
+		root->descend->next = NULL;
 	}
 	else {
-		return tree_search(root->right, key);
+		while (root->descend->next != NULL)
+			root->descend = root->descend->next;
+		root->descend->next =malloc(sizeof(node_t));
+		root->descend->next->node = node;
+		root->descend->next->next = NULL;
 	}
+
+	return root; 
 };
 
-node_t* tree_add(node_t* root, int key) {};
+
+
+
