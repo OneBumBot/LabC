@@ -1,28 +1,26 @@
 #ifndef __TREE__
 #define __TREE__
-
+#include <stdio.h>
 #include <stdlib.h>
+#define N 6
 
 
-typedef struct node_list {
-	struct node* node;
-	struct node_list* next;
-} node_list_t;
+typedef struct Tnode {
+    int key;
+    struct Tnode* desc[N];
+} TNode;
 
-typedef struct node {
-	int key;
-	node_list_t* descend;
-} node_t;
+
+
+
 
 //Tree create
-node_t* tree_create(int);
+TNode* node_create(int);
+TNode* tree_add(TNode*, int);
 
-//Read tree nodes
-void tree_traverse(node_t*);
-
-//Find an element in tree 
-node_t* tree_search(node_t*, int);
+int deserialize(TNode*, FILE*);
 
 //Add an element in tree
-node_t* tree_add(node_t*, int);
+
 #endif
+

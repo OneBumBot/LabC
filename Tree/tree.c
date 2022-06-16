@@ -1,48 +1,44 @@
-#include <stdio.h>
 #include "tree.h"
+#define MARKER -1
 
 
+TNode* node_create(int key) {
 
-node_t* tree_create(int key) {
-	node_t* node = NULL;
-
-	node = (node_t*)malloc(sizeof(node_t));
+	TNode* node = (TNode*)malloc(sizeof(TNode));
 	node->key = key;
-	node->descend = NULL;
-
+	for (int i = 0; i < N; i++) {
+		node->desc[i] = NULL;
+	}
 	return node;
 };
 
-void tree_traverse(node_t* root) {};
 
-node_t* tree_search(node_t* root, int key) {
-};
+TNode* tree_add(TNode* root, int key) {
 
-node_t* tree_add(node_t* root, int key) {
-
-	if (root == NULL) {
+	TNode* node = (TNode*)malloc(sizeof(TNode));
+	node->key = key;
+	int i = 0;
+	while (root->desc[i] != NULL && i < N) {
+		i++;
+	}
+	if (root->desc[i] == NULL) {
+		root->desc[i] = node;
+		return root;
+	}
+	else if ( root->desc[i] != NULL && i > N) {
 		return NULL;
 	}
+}
 
-	node_t* node = NULL;
-
-
-	node = (node_t*)realloc(node, sizeof(node_t));
-
-	node->key = key;
-	node->descend = NULL;
-	if (root->descend == NULL) {
-		root->descend = malloc(sizeof(node_t));
-		root->descend->node = node;
-		root->descend->next = NULL;
-		return root;
+int deserialize(TNode* root, FILE* fp) {
+	int val;
+	if (!scanf(fp, " % d", &val) || val == MARKER) {
+		return 1;
 	}
-	else {
-		while (root->descend->next != NULL)
-			root->descend = root->descend->next;
-		root->descend->next = malloc(sizeof(node_t));
-		root->descend->next->node = node;
-		root->descend->next->next = NULL;
-		return root;
+	root = node_create(val);
+	for (int i = 0; i < N; i++) {
+		if (deserialize(root->desc[i], fp))
+			break;
 	}
-};
+	return 0;
+}
